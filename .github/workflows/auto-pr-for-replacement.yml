@@ -43,4 +43,4 @@ jobs:
             Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
           body: |
             This PR replaces '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
-          labells: 'automated pr'
+          labels: 'automated pr'
