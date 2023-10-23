@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Generate Branch Name
         id: branchname
-        run: echo "::set-output name=MY_BRANCH::feature/replace-strings-$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+        run: echo "MY_BRANCH=feature/replace-strings-$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
 
       - name: Check out code
         uses: actions/checkout@v4
