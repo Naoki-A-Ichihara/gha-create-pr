@@ -29,18 +29,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Replace Strings
-        run: |
-          find . -type f -name '*' -exec sed -i "s/${{ github.event.inputs.search_string }}/${{ github.event.inputs.replace_string }}/g" {} \;
+        run: find . -type f -name '*' -exec sed -i "s/${{ github.event.inputs.search_string }}/${{ github.event.inputs.replace_string }}/g" {} \;
+        continue-on-error: false
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: |
-            Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
+          commit-message: Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
           branch: ${{ steps.branchname.outputs.MY_BRANCH }}
           base: main
-          title: |
-            Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
-          body: |
-            This PR replaces '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
+          title: Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
+          body: This PR replaces '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
           labels: 'automated pr'
