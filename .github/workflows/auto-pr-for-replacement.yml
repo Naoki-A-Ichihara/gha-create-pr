@@ -40,4 +40,5 @@ jobs:
           branch: ${{ steps.branchname.outputs.MY_BRANCH }}
           base: main
           title: Replace "${{ env.SEARCH }}" with "${{ env.REPLACE }}" by @${{ github.actor }}
+          body: $(cat .github/PULL_REQUEST_TEMPLATE.md)
           labels: 'automated pr'
