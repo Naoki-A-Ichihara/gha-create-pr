@@ -7,16 +7,15 @@ on:
       search_string:
         description: 'Search String to Replace'
         required: true
-        default: 'TYPO'
+        default: '1.2.3.4/32'
       replace_string:
         description: 'Replace String'
         required: true
-        default: 'TT'
+        default: '5.6.7.8/32'
 jobs:
   create-pr:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
       pull-requests: write
       # 上記に加えてリポジトリ設定のPR作成権限のチェックONが必要
       # https://stackoverflow.com/questions/72376229/github-actions-is-not-permitted-to-create-or-approve-pull-requests-createpullre
