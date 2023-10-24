@@ -29,7 +29,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Generate new branch name
-        run: echo "MY_BRANCH=feature/replace-strings-$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV            
+        run: echo "MY_BRANCH=feature/replace-ip-$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV            
       - name: Get pull request template
         run: |
           {
@@ -42,10 +42,9 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: Replace "${{ env.SEARCH }}" with "${{ env.REPLACE }}"
+          commit-message: "fix: replace \"${{ env.SEARCH }}\" with \"${{ env.REPLACE }}\""
           branch: ${{ env.MY_BRANCH }}
           base: main
           title: Replace "${{ env.SEARCH }}" with "${{ env.REPLACE }}" by @${{ github.actor }}
           body: ${{ env.MY_PR_TMPL }}
-          labels: 'automated pr'
           draft: true
