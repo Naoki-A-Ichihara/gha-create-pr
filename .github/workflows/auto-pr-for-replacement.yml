@@ -1,4 +1,5 @@
 name: Create PR with String Replacement
+run-name: Create PR with String Replacement for ${{ github.sha }} by @${{ github.actor }}
 on:
   pull_request: ## TODO: delete
   workflow_dispatch:
