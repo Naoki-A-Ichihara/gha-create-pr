@@ -23,8 +23,8 @@ jobs:
       # https://stackoverflow.com/questions/70435286/resource-not-accessible-by-integration-on-github-post-repos-owner-repo-ac
       # https://stackoverflow.com/questions/72376229/github-actions-is-not-permitted-to-create-or-approve-pull-requests-createpullre
     env:
-      SEARCH:  ${{ github.event.inputs.search_ip || 1.2.3.4 }}
-      REPLACE: ${{ github.event.inputs.replace_ip || 5.6.7.8 }}
+      SEARCH:  ${{ github.event.inputs.search_ip || "1.2.3.4" }}
+      REPLACE: ${{ github.event.inputs.replace_ip || "5.6.7.8" }}
     steps:
       - name: Generate branch name
         id: branchname
