@@ -15,7 +15,8 @@ on:
 jobs:
   create-pr:
     runs-on: ubuntu-latest
-    permissions: write-all
+    # https://stackoverflow.com/questions/72376229/github-actions-is-not-permitted-to-create-or-approve-pull-requests-createpullre
+    # permissions: write-all
     steps:
       - name: Generate branch name
         id: branchname
