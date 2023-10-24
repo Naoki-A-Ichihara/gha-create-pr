@@ -15,7 +15,7 @@ on:
 jobs:
   create-pr:
     runs-on: ubuntu-latest
-    permissions: writewrite-all
+    permissions: write-all
     steps:
       - name: Generate branch name
         id: branchname
