@@ -31,7 +31,7 @@ jobs:
         run: echo "MY_BRANCH=feature/replace-strings-$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT            
       - name: Get pull request template
         id: pr_tmpl
-        run: echo "MY_PR_TMPL=$(cat ./.github/PULL_REQUEST_TEMPLATE.md)" >> $GITHUB_OUTPUT            
+        run: echo "MY_PR_TMPL=$(pwd)" >> $GITHUB_OUTPUT            
       - name: Check out code
         uses: actions/checkout@v4
       - name: Replace strings
