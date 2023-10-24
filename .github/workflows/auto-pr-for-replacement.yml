@@ -36,9 +36,9 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: Replace \"${{ env.SEARCH }}\" with \"${{ env.REPLACE }}\"
+          commit-message: Replace "${{ env.SEARCH }}" with "${{ env.REPLACE }}"
           branch: ${{ steps.branchname.outputs.MY_BRANCH }}
           base: main
-          title: Replace \"${{ env.SEARCH }}\" with \"${{ env.REPLACE }}\" by @${{ github.actor }}
+          title: Replace "${{ env.SEARCH }}" with "${{ env.REPLACE }}" by @${{ github.actor }}
           body: This PR replaces "${{ env.SEARCH }}" with "${{ env.REPLACE }}"
           labels: 'automated pr'
