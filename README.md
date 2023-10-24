@@ -1,7 +1,7 @@
 # gha-create-pr
 
-- TYPO
-- TYPO2
+- TT
+- TT2
 
 ## IP list
 - 1.2.3.4/32
