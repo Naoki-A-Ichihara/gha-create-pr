@@ -32,13 +32,13 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Replace strings
-        run: sed -i "s@$SEARCH@$REPLACE@g" ./README.md
+        run: sed -i "s@${{ env.SEARCH }}@${{ env.REPLACE }}@g" ./README.md
       - name: Create pull request
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: Replace \"$SEARCH\" with \"$REPLACE\"
+          commit-message: Replace \"${{ env.SEARCH }}\" with \"${{ env.REPLACE }}\"
           branch: ${{ steps.branchname.outputs.MY_BRANCH }}
           base: main
-          title: Replace \"$SEARCH\" with \"$REPLACE\" by @${{ github.actor }}
-          body: This PR replaces "$SEARCH" with "$REPLACE"
+          title: Replace \"${{ env.SEARCH }}\" with \"${{ env.REPLACE }}\" by @${{ github.actor }}
+          body: This PR replaces "${{ env.SEARCH }}" with "${{ env.REPLACE }}"
           labels: 'automated pr'
