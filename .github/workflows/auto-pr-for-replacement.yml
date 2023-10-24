@@ -40,5 +40,4 @@ jobs:
           branch: ${{ steps.branchname.outputs.MY_BRANCH }}
           base: main
           title: Replace "${{ env.SEARCH }}" with "${{ env.REPLACE }}" by @${{ github.actor }}
-          body: This PR replaces "${{ env.SEARCH }}" with "${{ env.REPLACE }}"
           labels: 'automated pr'
