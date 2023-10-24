@@ -27,18 +27,18 @@ jobs:
       packages: write
       pages: write
       security-events: write
-      statuses: write
+      statuses: write    
       id-token: write
     steps:
       - name: Generate Branch Name
         id: branchname
-        run: echo "MY_BRANCH=feature/replace-strings-$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+        run: echo "MY_BRANCH=feature/replace-strings-$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT            
 
       - name: Check out code
         uses: actions/checkout@v4
 
       - name: Replace Strings
-        run: find . -type f -name '*' -exec sed -i "s/${{ github.event.inputs.search_string }}/${{ github.event.inputs.replace_string }}/g" {} \;
+        run: sed -i "s/${{ github.event.inputs.search_string }}/${{ github.event.inputs.replace_string }}/g" ./README.md
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
