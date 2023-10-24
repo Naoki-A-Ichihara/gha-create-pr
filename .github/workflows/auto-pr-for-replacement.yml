@@ -29,6 +29,9 @@ jobs:
       - name: Generate branch name
         id: branchname
         run: echo "MY_BRANCH=feature/replace-strings-$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT            
+      - name: Get pull request template
+        id: pr_tmpl
+        run: echo "MY_PR_TMPL=$(cat .github/PULL_REQUEST_TEMPLATE.md)" >> $GITHUB_OUTPUT            
       - name: Check out code
         uses: actions/checkout@v4
       - name: Replace strings
@@ -40,5 +43,5 @@ jobs:
           branch: ${{ steps.branchname.outputs.MY_BRANCH }}
           base: main
           title: Replace "${{ env.SEARCH }}" with "${{ env.REPLACE }}" by @${{ github.actor }}
-          body: $(cat .github/PULL_REQUEST_TEMPLATE.md)
+          body: ${{ steps.pr_tmpl.outputs.MY_PR_TMPL }}
           labels: 'automated pr'
