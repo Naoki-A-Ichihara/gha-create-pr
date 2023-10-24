@@ -27,7 +27,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Replace strings
-        run: sed -i "s/${{ github.event.inputs.search_string }}/${{ github.event.inputs.replace_string }}/g" ./README.md
+        run: sed -i "s@${{ github.event.inputs.search_string }}@${{ github.event.inputs.replace_string }}@g" ./README.md
       - name: Create pull request
         uses: peter-evans/create-pull-request@v5
         with:
