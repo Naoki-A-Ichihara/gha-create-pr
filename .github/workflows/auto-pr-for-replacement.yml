@@ -1,18 +1,16 @@
 name: Create PR with String Replacement
-
 on:
+  pull_request: ## TODO: delete
   workflow_dispatch:
     inputs:
       search_string:
         description: 'Search String to Replace'
         required: true
+        default: 'TYPO'
       replace_string:
         description: 'Replace String'
         required: true
-
-env:
-  GITHUB_TOKEN: ${{ secrets.ACTIONS_SECRET }}
-
+        default: 'TT'
 jobs:
   create-pr:
     runs-on: ubuntu-latest
@@ -30,7 +28,6 @@ jobs:
 
       - name: Replace Strings
         run: find . -type f -name '*' -exec sed -i "s/${{ github.event.inputs.search_string }}/${{ github.event.inputs.replace_string }}/g" {} \;
-        continue-on-error: false
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
