@@ -1,7 +1,7 @@
 name: Create PR with String Replacement
 run-name: Create PR with String Replacement by @${{ github.actor }}
 on:
-  pull_request: ## TODO: delete
+  push: ## TODO: delete
   workflow_dispatch:
     inputs:
       search_string:
