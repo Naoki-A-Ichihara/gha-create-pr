@@ -36,6 +36,6 @@ jobs:
           commit-message: Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
           branch: ${{ steps.branchname.outputs.MY_BRANCH }}
           base: main
-          title: Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
+          title: Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }} by @${{ github.actor }}'
           body: This PR replaces '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
           labels: 'automated pr'
