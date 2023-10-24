@@ -1,4 +1,4 @@
 # gha-create-pr
 
-TYPO
-TYPO2
+TT
+TT2
