@@ -1,15 +1,15 @@
-name: Create PR with String Replacement
-run-name: Create PR with String Replacement by @${{ github.actor }}
+name: Create PR with IP Address Replacement
+run-name: Create PR with IP Address Replacement by @${{ github.actor }}
 on:
   push: ## TODO: delete
   workflow_dispatch:
     inputs:
-      search_string:
-        description: 'Search String to Replace'
+      search_ip:
+        description: 'Search IP Address to Replace'
         required: true
         default: '1.2.3.4'
-      replace_string:
-        description: 'Replace String'
+      replace_ip:
+        description: 'Replace IP Address'
         required: true
         default: '5.6.7.8'
 jobs:
@@ -22,6 +22,9 @@ jobs:
       # PR作成権限 (`Allow GitHub Actions to create and approve pull requests`) のチェックONが必要
       # https://stackoverflow.com/questions/70435286/resource-not-accessible-by-integration-on-github-post-repos-owner-repo-ac
       # https://stackoverflow.com/questions/72376229/github-actions-is-not-permitted-to-create-or-approve-pull-requests-createpullre
+    env:
+      SEARCH:  ${{ github.event.inputs.search_ip || 1.2.3.4 }}
+      REPLACE: ${{ github.event.inputs.replace_ip || 5.6.7.8 }}
     steps:
       - name: Generate branch name
         id: branchname
@@ -29,13 +32,13 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Replace strings
-        run: sed -i "s@${{ github.event.inputs.search_string }}@${{ github.event.inputs.replace_string }}@g" ./README.md
+        run: sed -i "s@$SEARCH@$REPLACE@g" ./README.md
       - name: Create pull request
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
+          commit-message: Replace \"$SEARCH\" with \"$REPLACE\"
           branch: ${{ steps.branchname.outputs.MY_BRANCH }}
           base: main
-          title: Replace '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }} by @${{ github.actor }}'
-          body: This PR replaces '${{ github.event.inputs.search_string }}' with '${{ github.event.inputs.replace_string }}'
+          title: Replace \"$SEARCH\" with \"$REPLACE\" by @${{ github.actor }}
+          body: This PR replaces "$SEARCH" with "$REPLACE"
           labels: 'automated pr'
