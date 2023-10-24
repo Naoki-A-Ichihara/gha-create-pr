@@ -15,8 +15,10 @@ on:
 jobs:
   create-pr:
     runs-on: ubuntu-latest
-    # https://stackoverflow.com/questions/72376229/github-actions-is-not-permitted-to-create-or-approve-pull-requests-createpullre
-    # permissions: write-all
+    permissions:
+      contents: write
+      # 上記に加えてリポジトリ設定のPR作成権限のチェックONが必要
+      # https://stackoverflow.com/questions/72376229/github-actions-is-not-permitted-to-create-or-approve-pull-requests-createpullre
     steps:
       - name: Generate branch name
         id: branchname
